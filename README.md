@@ -34,11 +34,14 @@ $ create database Eventos;
 $ alter user YourUser with superuser;
 $ grant all privileges on database Eventos to daniel;
 $ psql -U YourUser -h 127.0.0.1 -p 5432 -d eventos
-$ exit()
+$ exit
+$ \q
+$ exit
 ```
 Sal de la base de datos y ahora se realiza la instalación de pgadmin4
 
 ```bash
+$ curl https://www.pgadmin.org/static/packages_pgadmin_org.pub | sudo apt-key add
 $ curl https://www.pgadmin.org/static/packages_pgadmin_org.pub | sudo apt-key add sudo sh -c 'echo "deb https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/$(lsb_release -cs) pgadmin4 main" > /etc/apt/sources.list.d/pgadmin4.list && apt update'
 $ sudo apt install pgadmin4
 ```
@@ -49,18 +52,54 @@ Los dos primeros permiten la creacion de las tablas asociadas a la aplicacion ap
 El comnado migrate realiza la creacion de tablas propias del res_framework de python para usuario Authorizaciones 
 permisos tokens etc.
 
-```bash
-$ python manage.py makemigrations api
-$ python manage.py migrate  api
-$ python manage.py migrate  
-```
-## Configuración Pycharm
+
+## Configuración código
 
 Utilice Pycharm o Visual Studio Code y abra el path del código.
 
+Una vez se ha ubicado en la carpeta que contiene el archivo Requirements deberá ejecutar lo siguiente
+
+```bash
+$ pip install -r Requirements
+$ sudo apt install python3.10-env
+$ python3 -m venv myent
+```
+
+Ahora ubicado en la misma carpeta donde se encuentra el archivo manage.py hacer
+
+```bash
+$ pip install -r Requirements
+```
+
+Es necesario crear un entorno que se realiza ubicado en la carpeta que contiene el codigo descargado.
+En la siguiente linea se muestra el ambiente creado que es entcor.
+
+```bash
+$ python3 -m venv entcor
+$ source entcor/bin/activate
+```
+Los siguientes comnados crearan las tablas en la base de datos referentes a los modelos.
+
+```bash
+$ python3 manage.py makemigrations api
+$ python3 manage.py migrate  api
+$ python manage.py migrate  
+```
+en la ubicacion del archivo requeriments.txt
+
+```bash
+$ sudo pip install -r requirements.txt
+```
+ahora en la ubicacion del archivo manage.py ejecuta 
+
+```bash
+$ sudo python3 manage.py runserver
+```
+y ahora podrias abrir los editores y ejecutar los siguientes comandos para trabajar mas comodo.
+
 Pycharm --> File --> Open
 Visual Studio Code --> File --> Open 
- En Visual Studio Code ejecute el comando runserver
+En Visual Studio Code ejecute el comando runserver
 
 Pycharm --> Run --> Edit Configurations --> :
 
@@ -68,7 +107,6 @@ Pycharm --> Run --> Edit Configurations --> :
  
 
 Posterior al paso anterior ejecute la api
-
 
 
 ![img_1.png](images/img_1.png)
