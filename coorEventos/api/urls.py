@@ -1,4 +1,3 @@
-from rest_framework.routers import DefaultRouter
 from rest_framework.authtoken import views
 
 from api.apiviews import EventoList, \
@@ -7,13 +6,13 @@ from api.apiviews import EventoList, \
     UserCreate, \
     LoginView
 
-from django.contrib import admin
-from django.urls import path, re_path, include
+
+from django.urls import path
 from rest_framework import permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 
-from rest_framework_swagger.views import get_swagger_view
+
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -28,12 +27,6 @@ schema_view = get_schema_view(
     permission_classes=(permissions.AllowAny,),
 )
 
-#from rest_framework.routers import DefaultRouter
-#from api.apiviews import EventoViewSet
-
-#router =DefaultRouter()
-#router.register('v2/eventos/',EventoViewSet, basename = 'eventos')
-
 urlpatterns = [
     path('v1/eventos/', EventoList.as_view(),name='Evento_list'),
     path('v1/eventos/<int:pk>', EventoDetalle.as_view(),name='EventoDetalle' ),
@@ -44,4 +37,3 @@ urlpatterns = [
     path('swagger-docs/',  schema_view.with_ui('swagger', cache_timeout=0),
          name='schema-swagger-ui'),
     ]
-#urlpatterns += router.urls

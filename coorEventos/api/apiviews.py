@@ -1,7 +1,3 @@
-# from rest_framework.views import APIView
-# from rest_framework.response import Response
-# from django.shortcuts import get_object_or_404
-
 from rest_framework import generics, viewsets, status
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -11,19 +7,6 @@ from django.contrib.auth import authenticate
 
 from .models import Evento
 from .serializers import EventoSerializer, UserSerializer
-
-
-# class EventoList(APIView):
-#    def get(self, request):
-#        prod = Evento.objects.all()[:20]
-#        data = EventoSerializer(prod, many=True).data
-#        return Response(data)
-
-# class EventoDetalle(APIView):
-#    def get(self,request,pk):
-#        even = get_object_or_404(Evento, pk=pk)
-#        data = EventoSerializer(even).data
-#        return Response(data)
 
 class EventoList(generics.ListCreateAPIView):
     queryset = Evento.objects.all()
