@@ -188,7 +188,7 @@ http://127.0.0.1:8000/api/swagger-docs/
 
 ## Video
 
-## https://www.youtube.com/watch?v=tJj_nr6jydI
+## https://www.youtube.com/watch?v=H2cDlR0DA5g
 
 ## Feautures
 
