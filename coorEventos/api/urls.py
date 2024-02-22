@@ -4,7 +4,8 @@ from api.apiviews import EventoList, \
     EventoDetalle, \
     EventoSave, \
     UserCreate, \
-    LoginView
+    LoginView, \
+    GetAddress
 
 
 from django.urls import path
@@ -32,6 +33,7 @@ urlpatterns = [
     path('v1/eventos/<int:pk>', EventoDetalle.as_view(),name='EventoDetalle' ),
     path('v1/eventos/', EventoSave.as_view(),name='evento_save' ),
     path('v3/usuarios/', UserCreate.as_view(),name='usuario_crear'),
+    path('v3/getStreets/', GetAddress.as_view(),name='Get_Address'),
     path('v4/login/', LoginView.as_view(),name='LoginView'),
     path('v4/login-drf/', views.obtain_auth_token, name='login-drf'),
     path('swagger-docs/',  schema_view.with_ui('swagger', cache_timeout=0),
